@@ -6,19 +6,23 @@ Example of State Management Usage and Documentation Can be found in below
 
 https://heartistic-developer-edition.ap4.force.com/laux/s/
 
-## [Functional Documentation](https://heartistic-dev-ed.my.salesforce.com/sfc/p/#6F000001HBQR/a/6F000000DOAL/sohTuVh4243lKrAjXzHX7oSHbEmdh4Sg2BYqUyliVus)
+## Functional Documentation
+Click [here](https://heartistic-dev-ed.my.salesforce.com/sfc/p/#6F000001HBQR/a/6F000000DOAL/sohTuVh4243lKrAjXzHX7oSHbEmdh4Sg2BYqUyliVus)
 
-## [Technical Documentation](https://heartistic-dev-ed.my.salesforce.com/sfc/p/6F000001HBQR/a/6F000000DOAQ/5Blnbru97uZrSahgwL4XvlDy7tmMjY.PFaRxC3rMoTc)
+## Technical Documentation
+Click [here](https://heartistic-dev-ed.my.salesforce.com/sfc/p/6F000001HBQR/a/6F000000DOAQ/5Blnbru97uZrSahgwL4XvlDy7tmMjY.PFaRxC3rMoTc)
 
 ## Basic Usage
 
 ### Aura
 
 For Store Provider which implements all functional logic for the apps
+```
 <c:LAX aura:id="counter" name="_counter"/>
 
 <aura:handler name="init" value="{!this}" action="{!c.createstore}"/>
-
+```
+```javascript
 createstore : function(component, event, helper) {
         console.log('Counter Store Creation');
 		var lax = component.find("lax");               
@@ -54,15 +58,15 @@ createstore : function(component, event, helper) {
             debuglevel:'debug'
         });
 	}
-
+```
 Twin Button
-.cmp
+```
 <c:LAX aura:id="lax" name="{!v.storename}"/>
 <c:LAX aura:id="laxconfig" name="_config"/>
 <aura:handler name="init" value="{!this}" action="{!c.connect}"/> 
-
+```
 controller
-
+```javascipt
     connect : function(component, event, helper) {		
         if(component.find("laxconfig").getconnector()){
             console.log('Using Config Provider')
@@ -79,9 +83,9 @@ controller
     decrement:function(component, event, helper) {
 		component.find("lax").getconnector().dispatch('decrement',{name: component.get('v.countername'), value: parseInt(component.get('v.steps'))});
 	}
-
+```
 ### LWC
-
+```javascript
 import { lwx, LWXLightningElement } from 'c/lxutil';
 export default class UIComp extends LWXLightningElement {
     store;
@@ -95,6 +99,6 @@ export default class UIComp extends LWXLightningElement {
         this.store.getconnector().dispatch('actionname',{event.detail.payload});
     }
 }
-
+```
 ## LAX Pro
 LAX Basic contains all state management with out any restrictions and free to use. But LAX Pro comes with framework level default debug features, which provides a debug store and UI for debugging. Developers can concentrate more on functionality than debugging with these features. The DEMO page also shows the debugging feature. [Contact us](mailto:heartisticsolutions@gmail.com) for more details.
