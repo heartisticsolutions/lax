@@ -567,9 +567,9 @@ class lwx {
   }    
 
   disconnect(){
-      var connector = _lax.getconnector(name);     
-      if(this.subsciptionid)
-          connector.unsubscribe('all', this.subsciptionid);  
+      var connector = _lax.getconnector(this.name);     
+      if(this.subscriptionid)
+          connector.unsubscribe('all', this.subscriptionid);  
   }
 }
 
