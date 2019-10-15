@@ -1,0 +1,19 @@
+<!--State Manager-->
+<aura:component description="Lightning State Manager" access="global">
+    <aura:handler name="init" value="{!this}" action="{!c.initialize}"/>
+    <aura:attribute required="true" name="name" description="Store Name" access="global" type="String" />
+    <aura:attribute required="false" name="subscriptionid" description="Subscription Id" access="global" type="String" />        
+    <aura:method name="getconnector" access="global" action="{!c.getconnector}">
+    </aura:method>
+    <c:lxutil aura:id = "lxutil"/>
+    <aura:method name="createStore" access="global" action="{!c.createStore}">        
+        <aura:attribute name="props" type="Map" />
+    </aura:method>                
+    <aura:method name="connect" access="global" action="{!c.connect}" >
+        <aura:attribute name="attributesmap" type="Map" />
+        <aura:attribute name="parentcomp" type="Aura.Component" />
+        <aura:attribute name="callback" type="Function" />
+    </aura:method>
+    <aura:method name="disconnect" access="global" action="{!c.disconnect}" >         
+    </aura:method>
+</aura:component>
